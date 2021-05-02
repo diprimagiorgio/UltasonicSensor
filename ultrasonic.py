@@ -1,15 +1,11 @@
 import time
-
 from RPi import GPIO as GPIO
-
-#from UltasonicSensor.ulta import ultrasonic
-
 
 class Ultrasonic:
     __trigger_pin_second__ = 0.00001
     __min_distance__ = 2
     __max_distance__ = 450
-    # making sure the trigger is down, therefore the ultrasonic sensor is nor mesuring Waiting For Sensor To Settle"
+    # making sure the trigger is down, therefore the ultrasonic sensor is nor measuring Waiting For Sensor To Settle"
     def __init__(self, pin_trig, pin_echo):
         # Setting up pin for ultrasonic sensor
         GPIO.setmode(GPIO.BCM)
@@ -54,8 +50,6 @@ class Ultrasonic:
         count_move_away = 0
         count_move_close = 0
 
-        history = []
-
         prev_distance = 0
         curr_distance = 0
 
@@ -69,12 +63,9 @@ class Ultrasonic:
                     count_move_close += 1
                 else:
                     count_move_away += 1
-
-                history.append(curr_distance)
             except ValueError :
                 count_out_of_range += 1
             time.sleep(0.05)
 
-        print(f"history : {history}\n away = {count_move_away} close = {count_move_close} no mov = {count_no_movement} out = {count_out_of_range}")
         opt = [count_out_of_range, count_no_movement, count_move_away, count_move_close]
         return opt.index(max(opt)) - 2
