@@ -1,5 +1,5 @@
-import paho.mqtt.client as mqtt #import the client1
-
+import paho.mqtt.client as mqtt
+#sort of singleton class, I want to initialize just one Client, and reuse it
 class MyMQTT:
     __instance__  : mqtt.Client = None
 

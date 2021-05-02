@@ -3,8 +3,6 @@ import adafruit_dht
 import board
 import sys
 import RPi.GPIO as GPIO
-
-
 from UltasonicSensor.ultrasonic import Ultrasonic
 from UltasonicSensor.mqtt_message import MyMQTT
 
@@ -39,9 +37,9 @@ if __name__ == "__main__":
                 print(err)
                 humidity =35
 
-            # reading temperature and humidity
-            print(f'Temp: {temperature} C  Humidity: {humidity} ')
+            #print(f'Temp: {temperature} C  Humidity: {humidity} ')
 
+            # sort of switch case
             option = {
                 -1 : no_movement,
                 -2 : no_movement,
